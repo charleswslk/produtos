@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.produtos.R
 import com.produtos.model.Produto
 
-class listaProdutosAdapter(
+class ListaProdutosAdapter(
     private val context : Context,
-    private val produtos: List<Produto>) : RecyclerView.Adapter<listaProdutosAdapter.ViewHolder>() {
+    private val produtos: List<Produto>) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
