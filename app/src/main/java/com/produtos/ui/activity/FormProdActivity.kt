@@ -6,30 +6,38 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.produtos.R
 import com.produtos.dao.ProdutoDao
+import com.produtos.databinding.ActivityFormProdBinding
 import com.produtos.model.Produto
 import java.math.BigDecimal
 
-class FormProdActivity : AppCompatActivity(R.layout.activity_form_prod) {
+class FormProdActivity : AppCompatActivity() {
+
+    private val binding by lazy{
+        ActivityFormProdBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
         val produtoDao = ProdutoDao()
 
-        findViewById<Button>(R.id.btn_form_prod_save).setOnClickListener {
+        binding.btnFormProdSave.setOnClickListener {
             produtoDao.add(createProduct())
             finish()
         }
 
-        findViewById<Button>(R.id.btn_form_prod_cancel).setOnClickListener {
+        binding.btnFormProdCancel.setOnClickListener {
             finish()
         }
     }
 
     private fun createProduct(): Produto {
-        val nome = findViewById<EditText>(R.id.edt_form_prod_nome).toString()
-        val descricao = findViewById<EditText>(R.id.edt_form_prod_descricao).toString()
-        val valor = "0.00"
-
+        val nome = binding.edtFormProdNome.text.toString()
+        val descricao = binding.edtFormProdDescricao.text.toString()
+        var valor = binding.edtFormProdValor.text.toString()
+        if (valor.equals(""))
+            valor = "0.00"
         val produto = Produto(
             nome,
             descricao,

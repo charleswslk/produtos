@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.produtos.R
+import com.produtos.databinding.ProdutoItemBinding
 import com.produtos.model.Produto
 
 class ListaProdutosAdapter(
@@ -16,20 +17,23 @@ class ListaProdutosAdapter(
 
     private val produtosM = produtos.toMutableList()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+    class ViewHolder(binding: ProdutoItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val nome = binding.nome
+        private val descricao = binding.descricao
+        private val valor = binding.valor
         fun vincula(produto: Produto) {
-            itemView.findViewById<TextView>(R.id.nome).text = produto.nome
-            itemView.findViewById<TextView>(R.id.descricao).text = produto.descricao
-            itemView.findViewById<TextView>(R.id.valor).text = produto.valor.toPlainString()
+            nome.text = produto.nome
+            descricao.text = produto.descricao
+            valor.text = produto.valor.toPlainString()
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(context).inflate(
-                R.layout.produto_item, parent, false
+            ProdutoItemBinding.inflate(
+                LayoutInflater.from(context),
+                parent,
+                false
             )
         )
     }
@@ -40,10 +44,9 @@ class ListaProdutosAdapter(
 
     override fun getItemCount(): Int = produtosM.size
 
-    fun updateList(produtos : List<Produto>) {
+    fun updateList(produtos: List<Produto>) {
         produtosM.clear()
         produtosM.addAll(produtos)
         notifyDataSetChanged()
-
     }
 }
