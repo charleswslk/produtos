@@ -3,6 +3,7 @@ package com.produtos.ui.activity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.produtos.R
 import com.produtos.dao.ProdutoDao
@@ -12,7 +13,7 @@ import java.math.BigDecimal
 
 class FormProdActivity : AppCompatActivity() {
 
-    private val binding by lazy{
+    private val binding by lazy {
         ActivityFormProdBinding.inflate(layoutInflater)
     }
 
@@ -29,6 +30,19 @@ class FormProdActivity : AppCompatActivity() {
 
         binding.btnFormProdCancel.setOnClickListener {
             finish()
+        }
+
+        binding.imgActivityFormProd.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setView(R.layout.form_prod_image)
+                .setPositiveButton("Confirmar") { _, _ ->
+
+                }
+                .setNegativeButton("Cancelar") { _, _ ->
+
+                }
+                .show()
+
         }
     }
 

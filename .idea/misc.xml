@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.15729166666666666" />
-        <entry key="../produtos/app/src/main/res/layout/activity_form_prod.xml" value="0.1203125" />
+        <entry key="../produtos/app/src/main/res/layout/activity_form_prod.xml" value="0.18" />
         <entry key="../produtos/app/src/main/res/layout/activity_main.xml" value="0.1203125" />
+        <entry key="../produtos/app/src/main/res/layout/form_prod_image.xml" value="0.2116289012398461" />
         <entry key="../produtos/app/src/main/res/layout/produto_item.xml" value="0.22" />
         <entry key="..\:/fontes/produtos/app/src/main/res/layout/activity_form_produto.xml" value="0.22" />
         <entry key="..\:/fontes/produtos/app/src/main/res/layout/activity_main.xml" value="0.2" />
