@@ -10,11 +10,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-thin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/descricao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Nome do Produto"/>
+        app:layout_constraintStart_toEndOf="@id/img_produto_item"
+        tools:text="Nome do Produto"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
     <TextView
         android:id="@+id/descricao"
@@ -22,20 +28,43 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif-thin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_produto_item"
         app:layout_constraintTop_toBottomOf="@id/nome"
-        tools:text="Descrição do Produto" />
+        app:layout_constraintBottom_toTopOf="@id/valor"
+        tools:text="Descrição do Produto"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
     <TextView
         android:id="@+id/valor"
         tools:text="Valor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_light"
         app:layout_constraintTop_toBottomOf="@id/descricao"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/img_produto_item"/>
+    <ImageView
+        android:id="@+id/img_produto_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nome"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:srcCompat="@drawable/banana"
+        tools:srcCompat="@tools:sample/avatars"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
