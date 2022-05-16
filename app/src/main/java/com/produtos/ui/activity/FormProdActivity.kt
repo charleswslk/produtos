@@ -5,13 +5,18 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.produtos.R
 import com.produtos.dao.ProdutoDao
 import com.produtos.databinding.ActivityFormProdBinding
+import com.produtos.databinding.FormProdImageBinding
 import com.produtos.model.Produto
+import com.produtos.ui.dialog.FormProdImgDialog
+import com.produtos.ui.ext.loadExt
 import java.math.BigDecimal
 
 class FormProdActivity : AppCompatActivity() {
+    private var url = ""
 
     private val binding by lazy {
         ActivityFormProdBinding.inflate(layoutInflater)
@@ -20,29 +25,21 @@ class FormProdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        title = "Cadastro de Produto"
 
         val produtoDao = ProdutoDao()
-
         binding.btnFormProdSave.setOnClickListener {
             produtoDao.add(createProduct())
             finish()
         }
-
         binding.btnFormProdCancel.setOnClickListener {
             finish()
         }
-
         binding.imgActivityFormProd.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setView(R.layout.form_prod_image)
-                .setPositiveButton("Confirmar") { _, _ ->
-
-                }
-                .setNegativeButton("Cancelar") { _, _ ->
-
-                }
-                .show()
-
+            FormProdImgDialog(this).show(url){
+                url = it
+                binding.imgActivityFormProd.loadExt(url)
+            }
         }
     }
 
@@ -55,7 +52,8 @@ class FormProdActivity : AppCompatActivity() {
         val produto = Produto(
             nome,
             descricao,
-            BigDecimal(valor)
+            BigDecimal(valor),
+            url
         )
         return produto
     }

@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/banana" />
+            app:srcCompat="@drawable/no_imagem" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_layout_activity_form_prod_nome"
